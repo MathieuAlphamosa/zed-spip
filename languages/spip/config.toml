@@ -1,0 +1,8 @@
+name = "SPIP"
+grammar = "spip"
+path_suffixes = ["html"]
+first_line_pattern = "<BOUCLE_|\\(#[A-Z]|<INCLURE\\{"
+block_comment = ["[(#REM) ", " ]"]
+word_characters = ["-", "_", "#"]
+tab_size = 4
+hard_tabs = false

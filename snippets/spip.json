@@ -1,0 +1,1157 @@
+{
+  "Boucle simple": {
+    "prefix": "boucle",
+    "body": [
+      "<BOUCLE_${1:name}(${2:ARTICLES}){${3:criteria}}{${4:par num titre, titre}}>",
+      "\t$0",
+      "</BOUCLE_$1>"
+    ],
+    "description": "Boucle SPIP simple"
+  },
+  "Boucle complète": {
+    "prefix": "bouclec",
+    "body": [
+      "<B_${1:name}>",
+      "<BOUCLE_$1(${2:ARTICLES}){${3:criteria}}{${4:par num titre, titre}}>",
+      "\t#TITRE",
+      "\t#TEXTE",
+      "</BOUCLE_$1>",
+      "</B_$1>",
+      "<//B_$1>"
+    ],
+    "description": "Boucle SPIP complète avec conditionnelles"
+  },
+  "Logo SPIP": {
+    "prefix": "logo",
+    "body": [
+      "[(#LOGO_${1:ARTICLE}|image_passe_partout{$2,$3}|image_recadre{$2,$3}|extraire_attribut{src})]"
+    ],
+    "description": "Logo SPIP avec traitements d'image"
+  },
+  "Image SPIP": {
+    "prefix": "img",
+    "body": [
+      "[<img src=\"(#LOGO_${1:ARTICLE}|image_passe_partout{$2,$3}|image_recadre{$2,$3}|extraire_attribut{src})\" alt=\"[(#TITRE|attribut_html)]\">]"
+    ],
+    "description": "Balise img avec logo SPIP"
+  },
+  "Commentaire SPIP": {
+    "prefix": "rem",
+    "body": ["[(#REM) ${1:commentaire} ]$0"],
+    "description": "Commentaire SPIP"
+  },
+  "Inclure": {
+    "prefix": "inclure",
+    "body": ["<INCLURE{fond=${1:inclure/footer}${2:,id_rubrique}${3:,env}} />$0"],
+    "description": "Inclusion dynamique"
+  },
+  "Array init": {
+    "prefix": "array-init",
+    "body": ["#SET{${1:nom_tableau}, #ARRAY}$0"],
+    "description": "Initialisation tableau"
+  },
+  "Array push": {
+    "prefix": "array-push",
+    "body": ["#SET{${1:nom_tableau}, #GET{$1}|push{${2:valeur}}}$0"],
+    "description": "Ajout d'une valeur à un tableau"
+  },
+  "Array in_array": {
+    "prefix": "array-inarray",
+    "body": ["[(${1:#VAL{toto}}|in_any{#GET{${2:nom_tableau}}}|oui) $3]$0"],
+    "description": "Affichage conditionnel si valeur présente dans tableau"
+  },
+  "Array dump": {
+    "prefix": "array-dump",
+    "body": ["[(#GET{${1:nom_tableau}}|foreach)]$0"],
+    "description": "Affiche un tableau"
+  },
+
+  "#PAGINATION": {
+    "prefix": "#PAGINATION",
+    "body": ["[<p class=\"pagination\">(#PAGINATION)</p>]"],
+    "description": "Pagination"
+  },
+  "#ANCRE_PAGINATION": {
+    "prefix": "#ANCRE_PAGINATION",
+    "body": ["#ANCRE_PAGINATION"],
+    "description": "Ancre de pagination"
+  },
+  "#ARRAY": {
+    "prefix": "#ARRAY",
+    "body": ["#ARRAY{$1,$0}"],
+    "description": "Tableau SPIP"
+  },
+  "#AUTORISER": {
+    "prefix": "#AUTORISER",
+    "body": ["[(#AUTORISER{$2, $3, $0}) $1]"],
+    "description": "Vérification d'autorisation"
+  },
+  "#BOUTON_ACTION": {
+    "prefix": "#BOUTON_ACTION",
+    "body": ["#BOUTON_ACTION{${1:libellé}, ${2:url}, ${3:class}, ${0:message_confirm}}"],
+    "description": "Bouton d'action"
+  },
+  "#CACHE": {
+    "prefix": "#CACHE",
+    "body": ["#CACHE{$0}"],
+    "description": "Durée du cache"
+  },
+  "#CHAPO": {
+    "prefix": "#CHAPO",
+    "body": ["#CHAPO"],
+    "description": "Chapeau de l'article"
+  },
+  "#CHARSET": {
+    "prefix": "#CHARSET",
+    "body": ["#CHARSET"],
+    "description": "Charset du site"
+  },
+  "#CHEMIN": {
+    "prefix": "#CHEMIN",
+    "body": ["#CHEMIN{$0}"],
+    "description": "Chemin vers un fichier"
+  },
+  "#COMPTEUR_BOUCLE": {
+    "prefix": "#COMPTEUR_BOUCLE",
+    "body": ["#COMPTEUR_BOUCLE"],
+    "description": "Compteur de la boucle courante"
+  },
+  "#CONFIG": {
+    "prefix": "#CONFIG",
+    "body": ["#CONFIG{$0}"],
+    "description": "Valeur de configuration"
+  },
+  "#DATE": {
+    "prefix": "#DATE",
+    "body": ["#DATE"],
+    "description": "Date de l'objet"
+  },
+  "#DATE_MODIF": {
+    "prefix": "#DATE_MODIF",
+    "body": ["#DATE_MODIF"],
+    "description": "Date de modification"
+  },
+  "#DATE_REDAC": {
+    "prefix": "#DATE_REDAC",
+    "body": ["#DATE_REDAC"],
+    "description": "Date de rédaction"
+  },
+  "#DESCRIPTIF": {
+    "prefix": "#DESCRIPTIF",
+    "body": ["#DESCRIPTIF"],
+    "description": "Descriptif de l'objet"
+  },
+  "#DESCRIPTIF_SITE_SPIP": {
+    "prefix": "#DESCRIPTIF_SITE_SPIP",
+    "body": ["#DESCRIPTIF_SITE_SPIP"],
+    "description": "Descriptif du site"
+  },
+  "#EMBED_DOCUMENT": {
+    "prefix": "#EMBED_DOCUMENT",
+    "body": ["[(#EMBED_DOCUMENT|autostart=${0:false})]"],
+    "description": "Embarquer un document"
+  },
+  "#ENV": {
+    "prefix": "#ENV",
+    "body": ["#ENV{$0}"],
+    "description": "Variable d'environnement"
+  },
+  "#EVAL": {
+    "prefix": "#EVAL",
+    "body": ["#EVAL{$0}"],
+    "description": "Évaluation PHP"
+  },
+  "#EXPOSE": {
+    "prefix": "#EXPOSE",
+    "body": ["#EXPOSE"],
+    "description": "Mise en exergue"
+  },
+  "#EXTENSION": {
+    "prefix": "#EXTENSION",
+    "body": ["#EXTENSION"],
+    "description": "Extension du fichier"
+  },
+  "#FICHIER": {
+    "prefix": "#FICHIER",
+    "body": ["[(#FICHIER|basename)]"],
+    "description": "Nom du fichier"
+  },
+  "#FOREACH": {
+    "prefix": "#FOREACH",
+    "body": ["#FOREACH{$1, $0}"],
+    "description": "Itération"
+  },
+  "#FORMULAIRE_ADMIN": {
+    "prefix": "#FORMULAIRE_ADMIN",
+    "body": ["#FORMULAIRE_ADMIN"],
+    "description": "Formulaire d'administration"
+  },
+  "#FORMULAIRE_ECRIRE_AUTEUR": {
+    "prefix": "#FORMULAIRE_ECRIRE_AUTEUR",
+    "body": ["#FORMULAIRE_ECRIRE_AUTEUR"],
+    "description": "Formulaire d'écriture à un auteur"
+  },
+  "#FORMULAIRE_INSCRIPTION": {
+    "prefix": "#FORMULAIRE_INSCRIPTION",
+    "body": ["[(#FORMULAIRE_INSCRIPTION{${0:6forum}})]"],
+    "description": "Formulaire d'inscription"
+  },
+  "#FORMULAIRE_RECHERCHE": {
+    "prefix": "#FORMULAIRE_RECHERCHE",
+    "body": ["[(#FORMULAIRE_RECHERCHE|spip.php?page=$0)]"],
+    "description": "Formulaire de recherche"
+  },
+  "#FORMULAIRE_SIGNATURE": {
+    "prefix": "#FORMULAIRE_SIGNATURE",
+    "body": ["#FORMULAIRE_SIGNATURE"],
+    "description": "Formulaire de signature"
+  },
+  "#FORMULAIRE_EDITER_LOGO": {
+    "prefix": "#FORMULAIRE_EDITER_LOGO",
+    "body": ["[(#FORMULAIRE_EDITER_LOGO{'${1:objet}',${0:#ID_OBJET},#SELF,#ENV**})]"],
+    "description": "Formulaire d'édition de logo"
+  },
+  "#SET": {
+    "prefix": "#SET",
+    "body": ["#SET{$1, $0}"],
+    "description": "Définir une variable"
+  },
+  "#GET": {
+    "prefix": "#GET",
+    "body": ["#GET{$0}"],
+    "description": "Récupérer une variable"
+  },
+  "#HAUTEUR": {
+    "prefix": "#HAUTEUR",
+    "body": ["#HAUTEUR"],
+    "description": "Hauteur de l'image/document"
+  },
+  "#HTTP_HEADER": {
+    "prefix": "#HTTP_HEADER",
+    "body": ["#HTTP_HEADER{$0}"],
+    "description": "En-tête HTTP"
+  },
+  "#ID_ARTICLE": {
+    "prefix": "#ID_ARTICLE",
+    "body": ["#ID_ARTICLE"],
+    "description": "Identifiant de l'article"
+  },
+  "#ID_AUTEUR": {
+    "prefix": "#ID_AUTEUR",
+    "body": ["#ID_AUTEUR"],
+    "description": "Identifiant de l'auteur"
+  },
+  "#ID_BREVE": {
+    "prefix": "#ID_BREVE",
+    "body": ["#ID_BREVE"],
+    "description": "Identifiant de la brève"
+  },
+  "#ID_DOCUMENT": {
+    "prefix": "#ID_DOCUMENT",
+    "body": ["#ID_DOCUMENT"],
+    "description": "Identifiant du document"
+  },
+  "#ID_GROUPE": {
+    "prefix": "#ID_GROUPE",
+    "body": ["#ID_GROUPE"],
+    "description": "Identifiant du groupe de mots"
+  },
+  "#ID_MOT": {
+    "prefix": "#ID_MOT",
+    "body": ["#ID_MOT"],
+    "description": "Identifiant du mot-clé"
+  },
+  "#ID_PARENT": {
+    "prefix": "#ID_PARENT",
+    "body": ["#ID_PARENT"],
+    "description": "Identifiant du parent"
+  },
+  "#ID_RUBRIQUE": {
+    "prefix": "#ID_RUBRIQUE",
+    "body": ["#ID_RUBRIQUE"],
+    "description": "Identifiant de la rubrique"
+  },
+  "#ID_SECTEUR": {
+    "prefix": "#ID_SECTEUR",
+    "body": ["#ID_SECTEUR"],
+    "description": "Identifiant du secteur"
+  },
+  "#ID_THREAD": {
+    "prefix": "#ID_THREAD",
+    "body": ["#ID_THREAD"],
+    "description": "Identifiant du fil de discussion"
+  },
+  "#INCLURE": {
+    "prefix": "#INCLURE",
+    "body": ["#INCLURE{fond=$0}"],
+    "description": "Inclusion (balise)"
+  },
+  "#INSERT_HEAD": {
+    "prefix": "#INSERT_HEAD",
+    "body": ["#INSERT_HEAD"],
+    "description": "Insertion dans le head"
+  },
+  "#INSERT_HEAD_CSS": {
+    "prefix": "#INSERT_HEAD_CSS",
+    "body": ["#INSERT_HEAD_CSS"],
+    "description": "Insertion CSS dans le head"
+  },
+  "#INTRODUCTION": {
+    "prefix": "#INTRODUCTION",
+    "body": ["#INTRODUCTION{$0}"],
+    "description": "Introduction de l'article"
+  },
+  "#IP": {
+    "prefix": "#IP",
+    "body": ["#IP"],
+    "description": "Adresse IP du visiteur"
+  },
+  "#LANG": {
+    "prefix": "#LANG",
+    "body": ["#LANG"],
+    "description": "Langue courante"
+  },
+  "#LANG_DIR": {
+    "prefix": "#LANG_DIR",
+    "body": ["#LANG_DIR"],
+    "description": "Direction de la langue (ltr/rtl)"
+  },
+  "#LANG_LEFT": {
+    "prefix": "#LANG_LEFT",
+    "body": ["#LANG_LEFT"],
+    "description": "Côté gauche selon la langue"
+  },
+  "#LANG_RIGHT": {
+    "prefix": "#LANG_RIGHT",
+    "body": ["#LANG_RIGHT"],
+    "description": "Côté droit selon la langue"
+  },
+  "#LARGEUR": {
+    "prefix": "#LARGEUR",
+    "body": ["#LARGEUR"],
+    "description": "Largeur de l'image/document"
+  },
+  "#LESAUTEURS": {
+    "prefix": "#LESAUTEURS",
+    "body": ["#LESAUTEURS"],
+    "description": "Liste des auteurs"
+  },
+  "#LOGO_ARTICLE": {
+    "prefix": "#LOGO_ARTICLE",
+    "body": ["#LOGO_ARTICLE"],
+    "description": "Logo de l'article"
+  },
+  "#LOGO_ARTICLE_RUBRIQUE": {
+    "prefix": "#LOGO_ARTICLE_RUBRIQUE",
+    "body": ["#LOGO_ARTICLE_RUBRIQUE"],
+    "description": "Logo de l'article ou de la rubrique"
+  },
+  "#LOGO_AUTEUR": {
+    "prefix": "#LOGO_AUTEUR",
+    "body": ["#LOGO_AUTEUR"],
+    "description": "Logo de l'auteur"
+  },
+  "#LOGO_DOCUMENT": {
+    "prefix": "#LOGO_DOCUMENT",
+    "body": ["#LOGO_DOCUMENT"],
+    "description": "Logo du document"
+  },
+  "#LOGO_MOT": {
+    "prefix": "#LOGO_MOT",
+    "body": ["#LOGO_MOT"],
+    "description": "Logo du mot-clé"
+  },
+  "#LOGO_RUBRIQUE": {
+    "prefix": "#LOGO_RUBRIQUE",
+    "body": ["#LOGO_RUBRIQUE"],
+    "description": "Logo de la rubrique"
+  },
+  "#LOGO_SITE": {
+    "prefix": "#LOGO_SITE",
+    "body": ["#LOGO_SITE"],
+    "description": "Logo du site"
+  },
+  "#LOGO_SITE_SPIP": {
+    "prefix": "#LOGO_SITE_SPIP",
+    "body": ["#LOGO_SITE_SPIP"],
+    "description": "Logo du site SPIP"
+  },
+  "#MIME_TYPE": {
+    "prefix": "#MIME_TYPE",
+    "body": ["#MIME_TYPE"],
+    "description": "Type MIME du document"
+  },
+  "#NOM": {
+    "prefix": "#NOM",
+    "body": ["#NOM"],
+    "description": "Nom de l'auteur"
+  },
+  "#NOM_SITE": {
+    "prefix": "#NOM_SITE",
+    "body": ["#NOM_SITE"],
+    "description": "Nom du site référencé"
+  },
+  "#NOM_SITE_SPIP": {
+    "prefix": "#NOM_SITE_SPIP",
+    "body": ["#NOM_SITE_SPIP"],
+    "description": "Nom du site SPIP"
+  },
+  "#NOTES": {
+    "prefix": "#NOTES",
+    "body": ["#NOTES"],
+    "description": "Notes de bas de page"
+  },
+  "#PIPELINE": {
+    "prefix": "#PIPELINE",
+    "body": ["#PIPELINE{$0}"],
+    "description": "Pipeline SPIP"
+  },
+  "#PRODUIRE": {
+    "prefix": "#PRODUIRE",
+    "body": ["#PRODUIRE{fond=$0}"],
+    "description": "Produire un fond statique"
+  },
+  "#PS": {
+    "prefix": "#PS",
+    "body": ["#PS"],
+    "description": "Post-scriptum"
+  },
+  "#RANG": {
+    "prefix": "#RANG",
+    "body": ["#RANG"],
+    "description": "Rang de l'objet"
+  },
+  "#REM": {
+    "prefix": "#REM",
+    "body": ["[(#REM) $1 ]$0"],
+    "description": "Commentaire SPIP"
+  },
+  "#SELF": {
+    "prefix": "#SELF",
+    "body": ["#SELF"],
+    "description": "URL courante"
+  },
+  "#SESSION": {
+    "prefix": "#SESSION",
+    "body": ["#SESSION{$0}"],
+    "description": "Variable de session"
+  },
+  "#SESSION_SET": {
+    "prefix": "#SESSION_SET",
+    "body": ["#SESSION_SET{$1, $0}"],
+    "description": "Définir variable de session"
+  },
+  "#SOUSTITRE": {
+    "prefix": "#SOUSTITRE",
+    "body": ["#SOUSTITRE"],
+    "description": "Sous-titre"
+  },
+  "#SQUELETTE": {
+    "prefix": "#SQUELETTE",
+    "body": ["#SQUELETTE"],
+    "description": "Nom du squelette"
+  },
+  "#SURTITRE": {
+    "prefix": "#SURTITRE",
+    "body": ["#SURTITRE"],
+    "description": "Sur-titre"
+  },
+  "#TAILLE": {
+    "prefix": "#TAILLE",
+    "body": ["[(#TAILLE|taille_en_octets)]"],
+    "description": "Taille du document"
+  },
+  "#TOTAL_BOUCLE": {
+    "prefix": "#TOTAL_BOUCLE",
+    "body": ["#TOTAL_BOUCLE"],
+    "description": "Nombre total de résultats"
+  },
+  "#TOTAL_UNIQUE": {
+    "prefix": "#TOTAL_UNIQUE",
+    "body": ["#TOTAL_UNIQUE{$0}"],
+    "description": "Total unique"
+  },
+  "#TYPE": {
+    "prefix": "#TYPE",
+    "body": ["#TYPE"],
+    "description": "Type de l'objet"
+  },
+  "#TYPE_DOCUMENT": {
+    "prefix": "#TYPE_DOCUMENT",
+    "body": ["#TYPE_DOCUMENT"],
+    "description": "Type du document"
+  },
+  "#URL_ARTICLE": {
+    "prefix": "#URL_ARTICLE",
+    "body": ["#URL_ARTICLE"],
+    "description": "URL de l'article"
+  },
+  "#URL_AUTEUR": {
+    "prefix": "#URL_AUTEUR",
+    "body": ["#URL_AUTEUR"],
+    "description": "URL de l'auteur"
+  },
+  "#URL_BREVE": {
+    "prefix": "#URL_BREVE",
+    "body": ["#URL_BREVE"],
+    "description": "URL de la brève"
+  },
+  "#URL_DOCUMENT": {
+    "prefix": "#URL_DOCUMENT",
+    "body": ["#URL_DOCUMENT"],
+    "description": "URL du document"
+  },
+  "#URL_MOT": {
+    "prefix": "#URL_MOT",
+    "body": ["#URL_MOT"],
+    "description": "URL du mot-clé"
+  },
+  "#URL_PAGE": {
+    "prefix": "#URL_PAGE",
+    "body": ["#URL_PAGE{$0}"],
+    "description": "URL d'une page"
+  },
+  "#URL_RUBRIQUE": {
+    "prefix": "#URL_RUBRIQUE",
+    "body": ["#URL_RUBRIQUE"],
+    "description": "URL de la rubrique"
+  },
+  "#URL_SITE": {
+    "prefix": "#URL_SITE",
+    "body": ["#URL_SITE"],
+    "description": "URL du site référencé"
+  },
+  "#URL_SITE_SPIP": {
+    "prefix": "#URL_SITE_SPIP",
+    "body": ["#URL_SITE_SPIP"],
+    "description": "URL du site SPIP"
+  },
+  "#VAL": {
+    "prefix": "#VAL",
+    "body": ["#VAL{$0}"],
+    "description": "Valeur littérale"
+  },
+  "#TITRE": {
+    "prefix": "#TITRE",
+    "body": ["#TITRE"],
+    "description": "Titre de l'objet"
+  },
+  "#TEXTE": {
+    "prefix": "#TEXTE",
+    "body": ["#TEXTE"],
+    "description": "Texte de l'objet"
+  },
+  "#SLOGAN_SITE_SPIP": {
+    "prefix": "#SLOGAN_SITE_SPIP",
+    "body": ["#SLOGAN_SITE_SPIP"],
+    "description": "Slogan du site SPIP"
+  },
+
+  "|supprimer_numero": {
+    "prefix": "|supprimer_numero",
+    "body": ["|supprimer_numero"],
+    "description": "Supprimer le numéro de titre"
+  },
+  "|supprimer_tags": {
+    "prefix": "|supprimer_tags",
+    "body": ["|supprimer_tags"],
+    "description": "Supprimer les balises HTML"
+  },
+  "|image_reduire": {
+    "prefix": "|image_reduire",
+    "body": ["|image_reduire{$1,$0}"],
+    "description": "Réduire une image"
+  },
+  "|abs_url": {
+    "prefix": "|abs_url",
+    "body": ["|abs_url"],
+    "description": "URL absolue"
+  },
+  "|affdate": {
+    "prefix": "|affdate",
+    "body": ["|affdate{$0:'Y-m-d'}"],
+    "description": "Afficher une date formatée"
+  },
+  "|affdate_court": {
+    "prefix": "|affdate_court",
+    "body": ["|affdate_court"],
+    "description": "Date courte"
+  },
+  "|affdate_jourcourt": {
+    "prefix": "|affdate_jourcourt",
+    "body": ["|affdate_jourcourt"],
+    "description": "Date jour court"
+  },
+  "|affdate_mois_annee": {
+    "prefix": "|affdate_mois_annee",
+    "body": ["|affdate_mois_annee"],
+    "description": "Date mois et année"
+  },
+  "|afficher_enclosures": {
+    "prefix": "|afficher_enclosures",
+    "body": ["|afficher_enclosures"],
+    "description": "Afficher les enclosures"
+  },
+  "|afficher_tags": {
+    "prefix": "|afficher_tags",
+    "body": ["|afficher_tags"],
+    "description": "Afficher les tags"
+  },
+  "|alterner": {
+    "prefix": "|alterner",
+    "body": ["|alterner{$0}"],
+    "description": "Alterner des valeurs"
+  },
+  "|ancre_url": {
+    "prefix": "|ancre_url",
+    "body": ["|ancre_url{$0}"],
+    "description": "Ajouter une ancre à l'URL"
+  },
+  "|annee": {
+    "prefix": "|annee",
+    "body": ["|annee"],
+    "description": "Extraire l'année"
+  },
+  "|appliquer_filtre": {
+    "prefix": "|appliquer_filtre",
+    "body": ["|appliquer_filtre{$0}"],
+    "description": "Appliquer un filtre dynamique"
+  },
+  "|attribut_html": {
+    "prefix": "|attribut_html",
+    "body": ["|attribut_html"],
+    "description": "Échapper pour attribut HTML"
+  },
+  "|balise_img": {
+    "prefix": "|balise_img",
+    "body": ["|balise_img{${1:alt}, ${0:class}}"],
+    "description": "Générer une balise img"
+  },
+  "|compacte": {
+    "prefix": "|compacte",
+    "body": ["|compacte"],
+    "description": "Compacter le code"
+  },
+  "|concat": {
+    "prefix": "|concat",
+    "body": ["|concat{$0}"],
+    "description": "Concaténer"
+  },
+  "|copie_locale": {
+    "prefix": "|copie_locale",
+    "body": ["|copie_locale"],
+    "description": "Copie locale du fichier"
+  },
+  "|couper": {
+    "prefix": "|couper",
+    "body": ["|couper{${1:longueur}, ${0:suite}}"],
+    "description": "Couper le texte"
+  },
+  "|date_relative": {
+    "prefix": "|date_relative",
+    "body": ["|date_relative"],
+    "description": "Date relative"
+  },
+  "|div": {
+    "prefix": "|div",
+    "body": ["|div{$0}"],
+    "description": "Division"
+  },
+  "|echapper_tags": {
+    "prefix": "|echapper_tags",
+    "body": ["|echapper_tags"],
+    "description": "Échapper les balises HTML"
+  },
+  "|entites_html": {
+    "prefix": "|entites_html",
+    "body": ["|entites_html"],
+    "description": "Convertir en entités HTML"
+  },
+  "|et": {
+    "prefix": "|et",
+    "body": ["|et{$0}"],
+    "description": "Opérateur ET logique"
+  },
+  "|extraire_attribut": {
+    "prefix": "|extraire_attribut",
+    "body": ["|extraire_attribut{${0:nom_attribut}}"],
+    "description": "Extraire un attribut HTML"
+  },
+  "|extraire_balise": {
+    "prefix": "|extraire_balise",
+    "body": ["|extraire_balise{${0:nom_balise}}"],
+    "description": "Extraire une balise HTML"
+  },
+  "|extraire_multi": {
+    "prefix": "|extraire_multi",
+    "body": ["|extraire_multi{${0:lang}}"],
+    "description": "Extraire un texte multilingue"
+  },
+  "|fichier": {
+    "prefix": "|fichier",
+    "body": ["|fichier"],
+    "description": "Chemin du fichier"
+  },
+  "|filtrer_entites": {
+    "prefix": "|filtrer_entites",
+    "body": ["|filtrer_entites"],
+    "description": "Filtrer les entités"
+  },
+  "|find": {
+    "prefix": "|find",
+    "body": ["|find{$0}"],
+    "description": "Trouver dans un tableau"
+  },
+  "|hauteur": {
+    "prefix": "|hauteur",
+    "body": ["|hauteur"],
+    "description": "Hauteur de l'image"
+  },
+  "|heures": {
+    "prefix": "|heures",
+    "body": ["|heures"],
+    "description": "Extraire les heures"
+  },
+  "|heures_minutes": {
+    "prefix": "|heures_minutes",
+    "body": ["|heures_minutes"],
+    "description": "Heures et minutes"
+  },
+  "|propre": {
+    "prefix": "|propre",
+    "body": ["|propre"],
+    "description": "Appliquer la typographie SPIP"
+  },
+  "|parametre_url": {
+    "prefix": "|parametre_url",
+    "body": ["|parametre_url{$1, $0}"],
+    "description": "Ajouter un paramètre à l'URL"
+  },
+  "|liens_ouvrants": {
+    "prefix": "|liens_ouvrants",
+    "body": ["|liens_ouvrants"],
+    "description": "Liens s'ouvrant dans un nouvel onglet"
+  },
+  "|vider_attribut": {
+    "prefix": "|vider_attribut",
+    "body": ["|vider_attribut{${0:attribut}}"],
+    "description": "Vider un attribut HTML"
+  },
+  "|image_alpha": {
+    "prefix": "|image_alpha",
+    "body": ["|image_alpha"],
+    "description": "Canal alpha de l'image"
+  },
+  "|image_aplatir": {
+    "prefix": "|image_aplatir",
+    "body": ["|image_aplatir{${1:format},${0:couleur}}"],
+    "description": "Aplatir l'image"
+  },
+  "|image_flou": {
+    "prefix": "|image_flou",
+    "body": ["|image_flou{$0}"],
+    "description": "Appliquer un flou"
+  },
+  "|image_gamma": {
+    "prefix": "|image_gamma",
+    "body": ["|image_gamma{$0}"],
+    "description": "Correction gamma"
+  },
+  "|image_masque": {
+    "prefix": "|image_masque",
+    "body": ["|image_masque{$0}"],
+    "description": "Appliquer un masque"
+  },
+  "|image_nb": {
+    "prefix": "|image_nb",
+    "body": ["|image_nb"],
+    "description": "Image en noir et blanc"
+  },
+  "|image_passe_partout": {
+    "prefix": "|image_passe_partout",
+    "body": ["|image_passe_partout{$1, $0}"],
+    "description": "Redimensionner pour remplir"
+  },
+  "|image_recadre": {
+    "prefix": "|image_recadre",
+    "body": ["|image_recadre{$1,$2,${3:center},${0:couleur}}"],
+    "description": "Recadrer l'image"
+  },
+  "|image_reduire_par": {
+    "prefix": "|image_reduire_par",
+    "body": ["|image_reduire_par{$0}"],
+    "description": "Réduire par un facteur"
+  },
+  "|image_rotation": {
+    "prefix": "|image_rotation",
+    "body": ["|image_rotation"],
+    "description": "Rotation de l'image"
+  },
+  "|image_sepia": {
+    "prefix": "|image_sepia",
+    "body": ["|image_sepia"],
+    "description": "Effet sépia"
+  },
+  "|image_typo": {
+    "prefix": "|image_typo",
+    "body": ["|image_typo"],
+    "description": "Texte en image"
+  },
+  "|implode": {
+    "prefix": "|implode",
+    "body": ["|implode{${0:separateur}}"],
+    "description": "Joindre les éléments d'un tableau"
+  },
+  "|inserer_attribut": {
+    "prefix": "|inserer_attribut",
+    "body": ["|inserer_attribut{${1:attribut}, ${0:valeur}}"],
+    "description": "Insérer un attribut HTML"
+  },
+  "|is_null": {
+    "prefix": "|is_null",
+    "body": ["|is_null"],
+    "description": "Tester si null"
+  },
+  "|jour": {
+    "prefix": "|jour",
+    "body": ["|jour"],
+    "description": "Extraire le jour"
+  },
+  "|largeur": {
+    "prefix": "|largeur",
+    "body": ["|largeur"],
+    "description": "Largeur de l'image"
+  },
+  "|liens_absolus": {
+    "prefix": "|liens_absolus",
+    "body": ["|liens_absolus"],
+    "description": "Convertir les liens en absolus"
+  },
+  "|lien_ou_expose": {
+    "prefix": "|lien_ou_expose",
+    "body": ["|lien_ou_expose{${1:intitulé}, ${0:condition}}"],
+    "description": "Lien ou mise en exergue"
+  },
+  "|majuscules": {
+    "prefix": "|majuscules",
+    "body": ["|majuscules"],
+    "description": "Convertir en majuscules"
+  },
+  "|match": {
+    "prefix": "|match",
+    "body": ["|match{$0}"],
+    "description": "Correspondance regex"
+  },
+  "|modulo": {
+    "prefix": "|modulo",
+    "body": ["|modulo{$0}"],
+    "description": "Modulo"
+  },
+  "|moins": {
+    "prefix": "|moins",
+    "body": ["|moins{$0}"],
+    "description": "Soustraction"
+  },
+  "|plus": {
+    "prefix": "|plus",
+    "body": ["|plus{$0}"],
+    "description": "Addition"
+  },
+  "|mois": {
+    "prefix": "|mois",
+    "body": ["|mois"],
+    "description": "Extraire le mois"
+  },
+  "|mult": {
+    "prefix": "|mult",
+    "body": ["|mult"],
+    "description": "Multiplication"
+  },
+  "|nom_jour": {
+    "prefix": "|nom_jour",
+    "body": ["|nom_jour"],
+    "description": "Nom du jour"
+  },
+  "|nom_mois": {
+    "prefix": "|nom_mois",
+    "body": ["|nom_mois"],
+    "description": "Nom du mois"
+  },
+  "|non": {
+    "prefix": "|non",
+    "body": ["|non"],
+    "description": "Filtre conditionnel NON"
+  },
+  "|normaliser_date": {
+    "prefix": "|normaliser_date",
+    "body": ["|normaliser_date"],
+    "description": "Normaliser une date"
+  },
+  "|ou": {
+    "prefix": "|ou",
+    "body": ["|ou{$0}"],
+    "description": "Opérateur OU logique"
+  },
+  "|oui": {
+    "prefix": "|oui",
+    "body": ["|oui"],
+    "description": "Filtre conditionnel OUI"
+  },
+  "|PtoBR": {
+    "prefix": "|PtoBR",
+    "body": ["|PtoBR"],
+    "description": "Convertir paragraphes en BR"
+  },
+  "|push": {
+    "prefix": "|push",
+    "body": ["|push{$0}"],
+    "description": "Ajouter à un tableau"
+  },
+  "|replace": {
+    "prefix": "|replace",
+    "body": ["|replace{${1:masque}, ${0:valeur}}"],
+    "description": "Remplacer"
+  },
+  "|reset": {
+    "prefix": "|reset",
+    "body": ["|reset"],
+    "description": "Premier élément du tableau"
+  },
+  "|safehtml": {
+    "prefix": "|safehtml",
+    "body": ["|safehtml"],
+    "description": "Nettoyer le HTML"
+  },
+  "|saison": {
+    "prefix": "|saison",
+    "body": ["|saison"],
+    "description": "Saison de la date"
+  },
+  "|secondes": {
+    "prefix": "|secondes",
+    "body": ["|secondes"],
+    "description": "Extraire les secondes"
+  },
+  "|singulier_ou_pluriel": {
+    "prefix": "|singulier_ou_pluriel",
+    "body": ["|singulier_ou_pluriel{$1, $0}"],
+    "description": "Singulier ou pluriel"
+  },
+  "|sinon": {
+    "prefix": "|sinon",
+    "body": ["|sinon{$0}"],
+    "description": "Valeur par défaut si vide"
+  },
+  "|table_valeur": {
+    "prefix": "|table_valeur",
+    "body": ["|table_valeur{${0:clé}}"],
+    "description": "Valeur d'un tableau par clé"
+  },
+  "|taille_en_octets": {
+    "prefix": "|taille_en_octets",
+    "body": ["|taille_en_octets"],
+    "description": "Taille formatée en octets"
+  },
+  "|textebrut": {
+    "prefix": "|textebrut",
+    "body": ["|textebrut"],
+    "description": "Texte brut sans HTML"
+  },
+  "|texte_script": {
+    "prefix": "|texte_script",
+    "body": ["|texte_script"],
+    "description": "Échapper pour JavaScript"
+  },
+  "|unique": {
+    "prefix": "|unique",
+    "body": ["|unique"],
+    "description": "Afficher une seule fois"
+  },
+  "|url_absolue": {
+    "prefix": "|url_absolue",
+    "body": ["|url_absolue"],
+    "description": "Convertir en URL absolue"
+  },
+  "|vide": {
+    "prefix": "|vide",
+    "body": ["|vide"],
+    "description": "Ne rien afficher"
+  },
+  "|xou": {
+    "prefix": "|xou",
+    "body": ["|xou{$0}"],
+    "description": "Opérateur XOR logique"
+  },
+
+  "{pagination}": {
+    "prefix": "{pagination}",
+    "body": ["{pagination}"],
+    "description": "Critère de pagination"
+  },
+  "{par}": {
+    "prefix": "{par",
+    "body": ["{par $0}"],
+    "description": "Critère de tri"
+  },
+  "{inverse}": {
+    "prefix": "{inverse}",
+    "body": ["{inverse}"],
+    "description": "Tri inversé"
+  },
+  "{tout}": {
+    "prefix": "{tout}",
+    "body": ["{tout}"],
+    "description": "Tous les résultats"
+  },
+  "{origine_traduction}": {
+    "prefix": "{origine_traduction}",
+    "body": ["{origine_traduction}"],
+    "description": "Origine de la traduction"
+  },
+  "{translitteration}": {
+    "prefix": "{translitteration}",
+    "body": ["{translitteration}"],
+    "description": "Enlever les accents"
+  },
+
+  "include_spip": {
+    "prefix": "include_spip",
+    "body": ["include_spip('$0')"],
+    "description": "Inclure un fichier via SPIP (PHP)"
+  },
+  "charger_fonction": {
+    "prefix": "charger_fonction",
+    "body": ["charger_fonction(${1:nom}, ${0:dossier})"],
+    "description": "Charger une fonction SPIP (PHP)"
+  },
+  "recuperer_fond": {
+    "prefix": "recuperer_fond",
+    "body": ["recuperer_fond('${0:chemin}', array(), array('ajax' => false))"],
+    "description": "Récupérer un fond (PHP)"
+  },
+  "recuperer_page": {
+    "prefix": "recuperer_page",
+    "body": ["recuperer_page('${0:chemin}')"],
+    "description": "Récupérer une page (PHP)"
+  },
+  "produire_fond_statique": {
+    "prefix": "produire_fond_statique",
+    "body": ["produire_fond_statique('${0:fond}', array())"],
+    "description": "Produire un fond statique (PHP)"
+  },
+  "find_in_path": {
+    "prefix": "find_in_path",
+    "body": ["find_in_path('$0')"],
+    "description": "Trouver un fichier dans le path SPIP (PHP)"
+  },
+  "generer_url_ecrire": {
+    "prefix": "generer_url_ecrire",
+    "body": ["generer_url_ecrire('${1:exec}', '${0:paramètre}')"],
+    "description": "Générer URL de l'espace privé (PHP)"
+  },
+  "generer_url_public": {
+    "prefix": "generer_url_public",
+    "body": ["generer_url_public('${1:exec}', '${0:paramètre}')"],
+    "description": "Générer URL publique (PHP)"
+  },
+  "generer_url_entite": {
+    "prefix": "generer_url_entite",
+    "body": ["generer_url_entite('${1:id}', '${2:objet}', '${3:args}', '${4:ancre}', '${5:public}', '${0:type}')"],
+    "description": "Générer URL d'une entité (PHP)"
+  },
+  "_request": {
+    "prefix": "_request",
+    "body": ["_request('$0')"],
+    "description": "Récupérer une variable de requête (PHP)"
+  },
+  "set_request": {
+    "prefix": "set_request",
+    "body": ["set_request('${1:nom}', ${0:valeur})"],
+    "description": "Définir une variable de requête (PHP)"
+  },
+  "sql_select": {
+    "prefix": "sql_select",
+    "body": ["sql_select('${1:champs}', '${2:table}', '${3:where}', '${4:groupby}', '${5:orderby}', '${6:limit}', '${0:having}')"],
+    "description": "Sélection SQL SPIP (PHP)"
+  },
+  "sql_fetsel": {
+    "prefix": "sql_fetsel",
+    "body": ["sql_fetsel('${1:champs}', '${2:table}', '${3:where}', '${4:groupby}', '${5:orderby}', '${6:limit}', '${0:having}')"],
+    "description": "Fetch + select SQL SPIP (PHP)"
+  },
+  "sql_allfetsel": {
+    "prefix": "sql_allfetsel",
+    "body": ["sql_allfetsel('${1:champs}', '${2:table}', '${3:where}', '${4:groupby}', '${5:orderby}', '${6:limit}', '${0:having}')"],
+    "description": "Fetch all SQL SPIP (PHP)"
+  },
+  "sql_countsel": {
+    "prefix": "sql_countsel",
+    "body": ["sql_countsel('${1:table}', '${0:where}')"],
+    "description": "Compter les résultats SQL (PHP)"
+  },
+  "sql_update": {
+    "prefix": "sql_update",
+    "body": ["sql_update('${1:table}', array('${2:champ}' => '${3:valeur}'), '${0:where}')"],
+    "description": "Mise à jour SQL SPIP (PHP)"
+  },
+  "sql_updateq": {
+    "prefix": "sql_updateq",
+    "body": ["sql_updateq('${1:table}', array('${2:champ}' => '${3:valeur}'), '${0:where}')"],
+    "description": "Mise à jour SQL quotée SPIP (PHP)"
+  },
+  "sql_insert": {
+    "prefix": "sql_insert",
+    "body": ["sql_insert('${1:table}', array('${2:champ}' => '${3:valeur}'))"],
+    "description": "Insertion SQL SPIP (PHP)"
+  },
+  "sql_insertq": {
+    "prefix": "sql_insertq",
+    "body": ["sql_insertq('${1:table}', array('${2:champ}' => '${3:valeur}'))"],
+    "description": "Insertion SQL quotée SPIP (PHP)"
+  },
+  "sql_delete": {
+    "prefix": "sql_delete",
+    "body": ["sql_delete('${1:table}', '${0:where}')"],
+    "description": "Suppression SQL SPIP (PHP)"
+  },
+  "sql_quote": {
+    "prefix": "sql_quote",
+    "body": ["sql_quote(${0:var})"],
+    "description": "Échapper pour SQL (PHP)"
+  },
+  "session_set": {
+    "prefix": "session_set",
+    "body": ["session_set('${1:nom}', '${0:valeur}')"],
+    "description": "Définir variable de session (PHP)"
+  },
+  "session_get": {
+    "prefix": "session_get",
+    "body": ["session_get('${0:nom}')"],
+    "description": "Lire variable de session (PHP)"
+  },
+  "table_objet": {
+    "prefix": "table_objet",
+    "body": ["table_objet('${0:table_sql}')"],
+    "description": "Nom de table objet (PHP)"
+  },
+  "table_objet_sql": {
+    "prefix": "table_objet_sql",
+    "body": ["table_objet_sql('${0:objet}')"],
+    "description": "Nom SQL de table objet (PHP)"
+  },
+  "lister_tables_objets_sql": {
+    "prefix": "lister_tables_objets_sql",
+    "body": ["lister_tables_objets_sql('${0:table_sql_spip}')"],
+    "description": "Lister les tables objets SQL (PHP)"
+  },
+  "email_valide": {
+    "prefix": "email_valide",
+    "body": ["email_valide(${0:mail})"],
+    "description": "Valider un email (PHP)"
+  },
+  "spip_log": {
+    "prefix": "spip_log",
+    "body": ["spip_log(${0:valeur}, 'test.' . _LOG_ERREUR);"],
+    "description": "Ajouter un log SPIP (PHP)"
+  }
+}

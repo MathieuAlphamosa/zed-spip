@@ -1,0 +1,12 @@
+[package]
+id = "spip"
+name = "SPIP"
+version = "0.1.0"
+schema_version = 1
+authors = ["Mathieu Alphamosa"]
+description = "Support du langage de squelettes SPIP (CMS) pour Zed : coloration syntaxique, snippets et complétions"
+repository = "https://github.com/MathieuAlphamosa/zed-spip"
+
+[grammars.spip]
+repository = "https://github.com/MathieuAlphamosa/tree-sitter-spip"
+rev = "03a4ea9b74b6ca8a1b19b0fe8f3e4a8c7293e751"
