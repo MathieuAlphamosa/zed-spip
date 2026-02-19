@@ -8,4 +8,4 @@ repository = "https://github.com/MathieuAlphamosa/zed-spip"
 
 [grammars.spip]
 repository = "https://github.com/MathieuAlphamosa/tree-sitter-spip"
-rev = "0f9ea8bd46df585ecdd48387ea47d8227c7c694d"
+rev = "53019fe45e26e2c6d2c86dc9234a712326e3dc56"
