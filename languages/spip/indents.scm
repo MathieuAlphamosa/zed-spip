@@ -3,15 +3,15 @@
 ; Indent after opening a loop
 (loop_open) @indent
 
-; Dedent at loop close
-(loop_close) @dedent
+; Outdent at loop close
+(loop_close) @outdent
 
 ; Indent after loop conditional open
 (loop_conditional_open) @indent
 
-; Dedent at loop conditional close
-(loop_conditional_close) @dedent
+; Outdent at loop conditional close
+(loop_conditional_close) @outdent
 
-; Loop alternative: dedent from "if" block, then indent for "else" block
-(loop_alternative) @dedent
+; Loop alternative: outdent from "if" block, then indent for "else" block
+(loop_alternative) @outdent
 (loop_alternative) @indent

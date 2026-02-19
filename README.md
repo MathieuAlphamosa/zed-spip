@@ -30,9 +30,11 @@ Dans Zed : `Cmd+Shift+P` > "Extensions: Install Dev Extension" > selectionner le
 
 ## Detection des fichiers
 
-SPIP utilise des fichiers `.html` pour ses squelettes. L'extension detecte automatiquement les fichiers SPIP grace a un `first_line_pattern` qui cherche `<BOUCLE_`, `(#...` ou `<INCLURE{` dans la premiere ligne.
+SPIP utilise des fichiers `.html` pour ses squelettes. Comme l'extension HTML de Zed revendique aussi les fichiers `.html`, il est necessaire de configurer Zed pour associer les fichiers `.html` au langage SPIP dans vos projets SPIP.
 
-Si la detection automatique ne fonctionne pas, vous pouvez forcer le langage manuellement via le selecteur de langage en bas a droite de Zed, ou configurer par projet dans `.zed/settings.json` :
+### Configuration par projet (recommande)
+
+Creez un fichier `.zed/settings.json` a la racine de votre projet SPIP :
 
 ```json
 {
@@ -41,6 +43,10 @@ Si la detection automatique ne fonctionne pas, vous pouvez forcer le langage man
   }
 }
 ```
+
+### Selection manuelle
+
+Vous pouvez aussi selectionner le langage SPIP manuellement via le selecteur de langage en bas a droite de la fenetre Zed (cliquer sur "HTML" puis choisir "SPIP").
 
 ## Snippets disponibles
 
