@@ -30,7 +30,11 @@ Dans Zed : `Cmd+Shift+P` > "Extensions: Install Dev Extension" > selectionner le
 
 ## Detection des fichiers
 
-SPIP utilise des fichiers `.html` pour ses squelettes. Comme l'extension HTML de Zed revendique aussi les fichiers `.html`, il est necessaire de configurer Zed pour associer les fichiers `.html` au langage SPIP dans vos projets SPIP.
+SPIP utilise des fichiers `.html` pour ses squelettes. L'extension ne peut pas revendiquer directement les fichiers `.html` car cela remplacerait completement le parser HTML integre de Zed (limitation connue : les extensions Zed ne peuvent pas heriter ou etendre un langage integre, elles le remplacent entierement — voir [zed-industries/zed#8795](https://github.com/zed-industries/zed/issues/8795)).
+
+Il est donc necessaire de configurer Zed pour associer les fichiers `.html` au langage SPIP dans vos projets SPIP.
+
+> **Note importante** : ne pas ajouter `path_suffixes = ["html"]` dans la configuration de l'extension. Cela provoque un conflit avec le parser HTML integre de Zed et entraine une consommation memoire illimitee (fuite memoire).
 
 ### Configuration par projet (recommande)
 
@@ -43,6 +47,8 @@ Creez un fichier `.zed/settings.json` a la racine de votre projet SPIP :
   }
 }
 ```
+
+Cela indique a Zed d'utiliser le parser SPIP pour les fichiers `.html` dans ce projet, sans affecter les autres projets.
 
 ### Selection manuelle
 
