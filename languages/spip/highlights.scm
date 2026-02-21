@@ -34,13 +34,14 @@
 (loop_open ")" @keyword)
 
 ; ── Criteria ──
-(criteria "{" @punctuation.bracket)
-(criteria "}" @punctuation.bracket)
+(criteria "{" @keyword)
+(criteria "}" @keyword)
 (criteria value: (criteria_value) @attribute)
 
 ; ── Include ──
 "<INCLURE" @keyword.import
 "/>" @keyword.import
+(include_tag ">" @keyword.import)
 (include_param_block "{" @keyword.import)
 (include_param_block "}" @keyword.import)
 (include_param_block params: (include_params) @string.special)

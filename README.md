@@ -47,13 +47,17 @@ Creez un fichier `.zed/settings.json` a la racine de votre projet SPIP :
   },
   "languages": {
     "SPIP": {
-      "language_servers": ["emmet-language-server"]
+      "language_servers": ["emmet-language-server"],
+      "colorize_brackets": false
     }
   }
 }
 ```
 
-Cela indique a Zed d'utiliser le parser SPIP pour les fichiers `.html` dans ce projet, sans affecter les autres projets. La ligne `language_servers` active Emmet pour les fichiers SPIP (necessiste l'extension [Emmet](https://zed.dev/extensions/emmet)).
+Cela indique a Zed d'utiliser le parser SPIP pour les fichiers `.html` dans ce projet, sans affecter les autres projets.
+
+- `language_servers` active Emmet pour les fichiers SPIP (necessite l'extension [Emmet](https://zed.dev/extensions/emmet))
+- `colorize_brackets` desactive la colorisation automatique des brackets, qui entre en conflit avec la coloration SPIP (les `[`, `]`, `(`, `)` des balises SPIP doivent garder la couleur de la balise, pas celle du bracket colorizer)
 
 ### Selection manuelle
 
