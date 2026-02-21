@@ -69,9 +69,9 @@
 (balise ")" @variable)
 
 ; ── Balise parameters ──
-; {, }, and param content use @attribute to distinguish from the tag name
-(balise_params "{" @attribute)
-(balise_params "}" @attribute)
+; {, } are @variable (part of the balise), content is @attribute
+(balise_params "{" @variable)
+(balise_params "}" @variable)
 (balise_params value: (param_content) @attribute)
 
 ; ── Shorthand balise parameters ──
