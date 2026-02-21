@@ -44,11 +44,16 @@ Creez un fichier `.zed/settings.json` a la racine de votre projet SPIP :
 {
   "file_types": {
     "SPIP": ["html"]
+  },
+  "languages": {
+    "SPIP": {
+      "language_servers": ["emmet-language-server"]
+    }
   }
 }
 ```
 
-Cela indique a Zed d'utiliser le parser SPIP pour les fichiers `.html` dans ce projet, sans affecter les autres projets.
+Cela indique a Zed d'utiliser le parser SPIP pour les fichiers `.html` dans ce projet, sans affecter les autres projets. La ligne `language_servers` active Emmet pour les fichiers SPIP (necessiste l'extension [Emmet](https://zed.dev/extensions/emmet)).
 
 ### Selection manuelle
 

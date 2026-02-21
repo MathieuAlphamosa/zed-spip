@@ -1,28 +1,48 @@
 ; SPIP syntax highlighting for Zed
+; IMPORTANT: Only use token-level or field-level captures.
+; Never capture entire compound nodes like (loop_open) @keyword
+; as this causes infinite memory consumption in Zed.
 
 ; ── Comments ──
 (comment) @comment
 "[(#REM)" @comment
 
 ; ── Loops (Boucles) ──
+; All loop tokens share @keyword color
 "<BOUCLE_" @keyword
 "</BOUCLE_" @keyword
 "<B_" @keyword
 "</B_" @keyword
 "<//B_" @keyword
 
-(loop_open name: (loop_name) @label)
-(loop_close name: (loop_name) @label)
-(loop_conditional_open name: (loop_name) @label)
-(loop_conditional_close name: (loop_name) @label)
-(loop_alternative name: (loop_name) @label)
+(loop_open name: (loop_name) @keyword)
+(loop_close name: (loop_name) @keyword)
+(loop_conditional_open name: (loop_name) @keyword)
+(loop_conditional_close name: (loop_name) @keyword)
+(loop_alternative name: (loop_name) @keyword)
+
+; Loop closing tokens
+(loop_open ">" @keyword)
+(loop_close ">" @keyword)
+(loop_conditional_open ">" @keyword)
+(loop_conditional_close ">" @keyword)
+(loop_alternative ">" @keyword)
+
+; Loop type stays distinct
 (loop_open type: (loop_type) @type)
+(loop_open "(" @keyword)
+(loop_open ")" @keyword)
 
 ; ── Criteria ──
+(criteria "{" @punctuation.bracket)
+(criteria "}" @punctuation.bracket)
 (criteria value: (criteria_value) @attribute)
 
 ; ── Include ──
 "<INCLURE" @keyword.import
+"/>" @keyword.import
+(include_param_block "{" @keyword.import)
+(include_param_block "}" @keyword.import)
 (include_param_block params: (include_params) @string.special)
 
 ; ── Multilingual ──
@@ -38,30 +58,34 @@
 (translation) @string.special.symbol
 
 ; ── Balises (Tags) ──
-(balise name: (balise_name) @function)
-(balise_shorthand name: (balise_name) @function)
-(balise namespace: (balise_namespace) @namespace)
+; #, (#, balise_name, ), [, ] all share @variable color
+"(#" @variable
+"#" @variable
+(balise name: (balise_name) @variable)
+(balise_shorthand name: (balise_name) @variable)
+(balise namespace: (balise_namespace) @variable)
+(balise ")" @variable)
 
 ; ── Balise parameters ──
-(balise_params value: (param_content) @string)
+; {, content, } all share @variable color inside balise params
+(balise_params "{" @variable)
+(balise_params "}" @variable)
+(balise_params value: (param_content) @variable)
 
 ; ── Filters ──
+"|" @punctuation.delimiter
 (filter name: (filter_name) @function.method)
 
 ; Special filters |oui and |non
 ((filter name: (filter_name) @function.builtin)
   (#match? @function.builtin "^(oui|non)$"))
 
-(filter_params value: (param_content) @string)
+; Filter params: {, content, } in filter color
+(filter_params "{" @function.method)
+(filter_params "}" @function.method)
+(filter_params value: (param_content) @function.method)
 
 ; ── Conditional brackets ──
-(conditional_open) @punctuation.bracket
-(conditional_close) @punctuation.bracket
-
-; ── Punctuation ──
-"(#" @punctuation.special
-"#" @punctuation.special
-"|" @punctuation.delimiter
-"{" @punctuation.bracket
-"}" @punctuation.bracket
-"/>" @punctuation.special
+; [ and ] around balises share the variable color
+(conditional_open) @variable
+(conditional_close) @variable

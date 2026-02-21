@@ -5,7 +5,8 @@ schema_version = 1
 authors = ["Mathieu Alphamosa"]
 description = "Support du langage de squelettes SPIP (CMS) pour Zed : coloration syntaxique, snippets et complétions"
 repository = "https://github.com/MathieuAlphamosa/zed-spip"
+snippets = "./snippets/spip.json"
 
 [grammars.spip]
 repository = "https://github.com/MathieuAlphamosa/tree-sitter-spip"
-rev = "4c634230b0ae9a0f91fdae04c667aa526d5c90ff"
+rev = "4a8efb3dbd53d7e09685e89782d68fa0612e11fc"
