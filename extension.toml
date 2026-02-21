@@ -9,4 +9,4 @@ snippets = "./snippets/spip.json"
 
 [grammars.spip]
 repository = "https://github.com/MathieuAlphamosa/tree-sitter-spip"
-rev = "9dba7fc631285c2598427d7ced4ae9fefcc3260d"
+rev = "423b3c7bea7d9dcf0d2668c1795fdbce3de6b239"

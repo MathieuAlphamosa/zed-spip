@@ -59,19 +59,20 @@
 (translation) @string.special.symbol
 
 ; ── Balises (Tags) ──
-; #, (#, balise_name, ), [, ] all share @variable color
+; #, (#, balise_name, namespace, ), [, ] all share @variable color
 "(#" @variable
 "#" @variable
 (balise name: (balise_name) @variable)
 (balise_shorthand name: (balise_name) @variable)
 (balise namespace: (balise_namespace) @variable)
+(balise_shorthand namespace: (balise_namespace) @variable)
 (balise ")" @variable)
 
 ; ── Balise parameters ──
-; {, content, } all share @variable color inside balise params
-(balise_params "{" @variable)
-(balise_params "}" @variable)
-(balise_params value: (param_content) @variable)
+; {, }, and param content use @attribute to distinguish from the tag name
+(balise_params "{" @attribute)
+(balise_params "}" @attribute)
+(balise_params value: (param_content) @attribute)
 
 ; ── Filters ──
 "|" @punctuation.delimiter
@@ -81,10 +82,10 @@
 ((filter name: (filter_name) @function.builtin)
   (#match? @function.builtin "^(oui|non)$"))
 
-; Filter params: {, content, } in filter color
+; Filter params: {, } use filter color, content uses @attribute
 (filter_params "{" @function.method)
 (filter_params "}" @function.method)
-(filter_params value: (param_content) @function.method)
+(filter_params value: (param_content) @attribute)
 
 ; ── Conditional brackets ──
 ; [ and ] around balises share the variable color
