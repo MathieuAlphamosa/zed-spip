@@ -74,6 +74,12 @@
 (balise_params "}" @attribute)
 (balise_params value: (param_content) @attribute)
 
+; ── Shorthand balise parameters ──
+; {, } are @variable (part of the balise), content is @attribute
+(shorthand_lbrace) @variable
+(shorthand_params "}" @variable)
+(shorthand_params value: (param_content) @attribute)
+
 ; ── Filters ──
 "|" @punctuation.delimiter
 (filter name: (filter_name) @function.method)
