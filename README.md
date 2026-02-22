@@ -36,7 +36,7 @@ Il est donc necessaire de configurer Zed pour associer les fichiers `.html` au l
 
 > **Note importante** : ne pas ajouter `path_suffixes = ["html"]` dans la configuration de l'extension. Cela provoque un conflit avec le parser HTML integre de Zed et entraine une consommation memoire illimitee (fuite memoire).
 
-### Configuration par projet (recommande)
+### Configuration par projet (recommandé)
 
 Creez un fichier `.zed/settings.json` a la racine de votre projet SPIP :
 
@@ -56,12 +56,12 @@ Creez un fichier `.zed/settings.json` a la racine de votre projet SPIP :
 
 Cela indique a Zed d'utiliser le parser SPIP pour les fichiers `.html` dans ce projet, sans affecter les autres projets.
 
-- `language_servers` active Emmet pour les fichiers SPIP (necessite l'extension [Emmet](https://zed.dev/extensions/emmet))
+- `language_servers` active Emmet pour les fichiers SPIP (nécessite l'extension [Emmet](https://zed.dev/extensions/emmet))
 - `colorize_brackets` desactive la colorisation automatique des brackets, qui entre en conflit avec la coloration SPIP (les `[`, `]`, `(`, `)` des balises SPIP doivent garder la couleur de la balise, pas celle du bracket colorizer)
 
-### Selection manuelle
+### Sélection manuelle
 
-Vous pouvez aussi selectionner le langage SPIP manuellement via le selecteur de langage en bas a droite de la fenetre Zed (cliquer sur "HTML" puis choisir "SPIP").
+Vous pouvez aussi sélectionner le langage SPIP manuellement via le sélecteur de langage en bas a droite de la fenêtre Zed (cliquer sur "HTML" puis choisir "SPIP").
 
 ## Snippets disponibles
 
@@ -98,7 +98,7 @@ Cette extension utilise la grammaire [tree-sitter-spip](https://github.com/Mathi
 
 ## Genesis
 
-Cette extension et sa grammaire tree-sitter ont ete vibecodees avec [Claude Code](https://claude.ai/), l'agent IA de code d'Anthropic, a partir d'une [extension Sublime Text](https://github.com/MathieuAlphamosa/Sublime-SPIP-AM) existante. La grammaire, le scanner externe, le corpus de test et les 170+ snippets ont ete concus et iteres par conversation, testes sur 15 vrais squelettes SPIP de sites en production.
+Cette extension et sa grammaire tree-sitter ont été vibecodées avec [Claude Code](https://claude.ai/), l'agent IA de code d'Anthropic, à partir d'une [extension Sublime Text](https://github.com/MathieuAlphamosa/Sublime-SPIP-AM) existante. La grammaire, le scanner externe, le corpus de test et les 170+ snippets ont été concus et itérés par conversation.
 
 ## License
 
