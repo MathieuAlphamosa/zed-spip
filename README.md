@@ -2,6 +2,9 @@
 
 Extension [Zed](https://zed.dev/) pour le langage de squelettes [SPIP](https://www.spip.net/).
 
+<img width="1315" height="869" alt="Capture d’écran 2026-02-22 à 19 09 40" src="https://github.com/user-attachments/assets/64a7cbfb-74b3-462c-ad99-d693222545fb" />
+
+
 ## Fonctionnalites
 
 - **Coloration syntaxique** de toutes les constructions SPIP (boucles, balises, filtres, inclusions, commentaires, multi, traductions)
