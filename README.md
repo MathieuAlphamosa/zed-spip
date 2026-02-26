@@ -59,8 +59,18 @@ Creez un fichier `.zed/settings.json` a la racine de votre projet SPIP :
 
 Cela indique a Zed d'utiliser le parser SPIP pour les fichiers `.html` dans ce projet, sans affecter les autres projets.
 
-- `language_servers` active Emmet pour les fichiers SPIP (nécessite l'extension [Emmet](https://zed.dev/extensions/emmet))
+- `language_servers` active Emmet pour les fichiers SPIP (nécessite l'extension [Emmet](https://zed.dev/extensions/emmet) et le patch ci-dessous)
 - `colorize_brackets` desactive la colorisation automatique des brackets, qui entre en conflit avec la coloration SPIP (les `[`, `]`, `(`, `)` des balises SPIP doivent garder la couleur de la balise, pas celle du bracket colorizer)
+
+### Activer Emmet pour SPIP
+
+L'extension Emmet de Zed ne supporte pas les langages tiers par defaut. Un script est fourni pour ajouter SPIP a la liste des langages supportes par Emmet :
+
+```bash
+./scripts/patch-emmet.sh
+```
+
+> **Note** : ce patch modifie le fichier `extension.toml` de l'extension Emmet installee localement (`~/Library/Application Support/Zed/extensions/installed/emmet/extension.toml`). Il est ecrase a chaque mise a jour de l'extension Emmet — relancez le script apres chaque mise a jour.
 
 ### Sélection manuelle
 

@@ -19,6 +19,7 @@ zed-spip/
 │   ├── indents.scm                   # Règles d'indentation
 │   └── outline.scm                   # Panneau outline (boucles, includes)
 ├── snippets/spip.json                # 170+ snippets
+├── scripts/patch-emmet.sh            # Script pour ajouter SPIP à l'extension Emmet
 ├── grammars/                         # Cache WASM compilé (gitignored, à supprimer pour forcer recompilation)
 └── README.md
 ```
@@ -127,28 +128,17 @@ Le nom du fichier (`spip.json`) doit correspondre au nom de grammaire en minuscu
 
 ### 7. Emmet pour SPIP
 
-Emmet ne fonctionne pas par défaut pour les langages personnalisés. Config nécessaire dans `.zed/settings.json` :
+Emmet ne fonctionne pas par défaut pour les langages personnalisés. L'extension Emmet de Zed a une **liste explicite de langages** dans son `extension.toml` (`~/Library/Application Support/Zed/extensions/installed/emmet/extension.toml`). Si un langage n'est pas dans cette liste, le language server n'est jamais démarré pour ce langage.
 
-```json
-{
-  "languages": {
-    "SPIP": {
-      "language_servers": ["emmet-language-server"]
-    }
-  },
-  "lsp": {
-    "emmet-language-server": {
-      "settings": {
-        "emmet": {
-          "includeLanguages": { "spip": "html" }
-        }
-      }
-    }
-  }
-}
-```
+**La solution `includeLanguages` dans les settings Zed NE FONCTIONNE PAS** — Zed filtre les langages avant de démarrer le serveur. C'est une limitation connue (zed-industries/zed#16481).
 
-Nécessite l'extension Emmet installée dans Zed.
+**Solution** : le script `scripts/patch-emmet.sh` modifie le `extension.toml` d'Emmet pour y ajouter :
+1. `"SPIP"` dans la liste `languages` de `[language_servers.emmet-language-server]`
+2. `SPIP = "html"` dans `[language_servers.emmet-language-server.language_ids]`
+
+En plus du patch, il faut `"language_servers": ["emmet-language-server", "..."]` dans les settings du projet pour que Zed associe le serveur au langage SPIP.
+
+**Important** : le patch est écrasé à chaque mise à jour de l'extension Emmet. Relancer le script après chaque MAJ.
 
 ## Stratégie de coloration (highlights.scm)
 
