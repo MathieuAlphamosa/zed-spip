@@ -18,10 +18,7 @@ Extension [Zed](https://zed.dev/) pour le langage de squelettes [SPIP](https://w
 
 ### Depuis le registre Zed
 
-1. Ouvrir Zed
-2. `Cmd+Shift+P` > "Extensions: Install Extension"
-3. Chercher "SPIP"
-4. Installer
+Indisponible pour le moment : je n'ai pas publié l'extension dans le registre Zed.
 
 ### Installation en mode dev
 
