@@ -1,6 +1,6 @@
 id = "spip"
 name = "SPIP"
-version = "0.1.0"
+version = "0.1.1"
 schema_version = 1
 authors = ["Mathieu Alphamosa"]
 description = "Support du langage de squelettes SPIP (CMS) pour Zed : coloration syntaxique, snippets et complétions"
